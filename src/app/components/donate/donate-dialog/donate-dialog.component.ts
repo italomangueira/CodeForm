@@ -15,7 +15,7 @@ import { MatSnackBarModule, MatSnackBar } from '@angular/material/snack-bar';
 
       <div class="flex justify-center mb-4">
         <img
-          src="https://github.com/italomangueira/CodeForm/blob/master/public/"
+          src="https://github.com/italomangueira/CodeForm/blob/master/public/qrCode.jpg?raw=true"
           alt="QR Code Pix"
           class="w-52 h-52 rounded"
         />
