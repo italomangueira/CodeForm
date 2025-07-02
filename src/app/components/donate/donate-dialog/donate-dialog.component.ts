@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import QRCode from 'qrcode';
 import { MatSnackBarModule, MatSnackBar } from '@angular/material/snack-bar';
-import { environment } from '../../../../environments/environment';
+import { environment } from '../../../../environments/environment.example';
 
 @Component({
   selector: 'app-donate-dialog',
