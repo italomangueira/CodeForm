@@ -1,7 +1,5 @@
-import { Component, inject, OnInit } from '@angular/core';
-import QRCode from 'qrcode';
+import { Component, inject } from '@angular/core';
 import { MatSnackBarModule, MatSnackBar } from '@angular/material/snack-bar';
-import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-donate-dialog',
@@ -15,8 +13,12 @@ import { environment } from '../../../../environments/environment';
         Escaneie o QR Code abaixo para doar qualquer valor via Pix.
       </p>
 
-      <div ngIf="qrCodeData" class="flex justify-center mb-4">
-        <img [src]="qrCodeData" alt="QR Code Pix" class="w-52 h-52 rounded" />
+      <div class="flex justify-center mb-4">
+        <img
+          src="https://github.com/italomangueira/CodeForm/blob/master/public/"
+          alt="QR Code Pix"
+          class="w-52 h-52 rounded"
+        />
       </div>
 
       <p class="text-gray-700 font-medium">Chave Pix:</p>
@@ -36,21 +38,11 @@ import { environment } from '../../../../environments/environment';
 })
 export class DonateDialogComponent {
   private _snackBar = inject(MatSnackBar);
-  qrCodeData: string = environment.QR_CODE_DATA;
-  chavePix: string = environment.CHAVE_PIX;
-
-  ngOnInit() {
-    const payload = this.generatePixPayload();
-    QRCode.toDataURL(payload).then((url: string) => {
-      this.qrCodeData = url;
-    });
-  }
-
-  generatePixPayload(): string {
-    return `${this.qrCodeData}`;
-  }
+  chavePix: string = '791f5649-04ec-478f-87f8-fc815433afd4';
 
   openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action);
+    navigator.clipboard.writeText(this.chavePix).then(() => {
+      this._snackBar.open(message, action);
+    });
   }
 }
