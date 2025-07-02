@@ -1,1 +1,31 @@
-/* You can add global styles to this file, and also import other style files */
+@use "./tailwind.css";
+@use "@angular/material" as mat;
+@use "./app/themes/lightThemetheme.css";
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.cdk-drop-list-dragging:not(.element-menu) {
+  border: 2px solid lightgray !important;
+  background-color: lightgray !important;
+}
+
+.compact-button {
+  @include mat.button-overrides(
+    (
+      filled-container-height: 36px,
+      filled-container-shape: 5px,
+    )
+  );
+}
+
+::view-transition-new(.field-transition),
+::view-transition-old(.field-transition) {
+  height: 100%;
+}
